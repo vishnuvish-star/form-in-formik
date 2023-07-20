@@ -19,7 +19,7 @@ const UserForm = () => {
     } catch (e) {
       console.error("Error adding document: ", e);
     }
-    alert("Register Successfully");
+    // alert("Register Successfully");
   };
 
   // get data from firestore
@@ -31,7 +31,7 @@ const UserForm = () => {
       setUser(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
     getUsers();
-  }, []);
+  }, [user]);
   console.log(user);
 
   const {
