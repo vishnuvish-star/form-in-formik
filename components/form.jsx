@@ -54,7 +54,7 @@ const UserForm = () => {
   });
 
   return (
-    <div className=" p-5  m-5">
+    <div className=" p-5  m-5 flex  flex-col items-center">
       <form
         onSubmit={handleSubmit}
         className="flex  flex-col  justify-center w-1/5 bg-white shadow-xl p-2 "
@@ -66,14 +66,16 @@ const UserForm = () => {
           placeholder="name"
           className={`${
             errors.name && touched.name
-              ? "  p-2 rounded-md border border-red-300"
+              ? "  p-2 rounded-md border border-red-400"
               : "outline-none p-2 rounded-md  bg-gray-50 border border-gray-100"
           }`}
           value={values.name}
           onChange={handleChange}
           onBlur={handleBlur}
         />
-
+        {errors.name && touched.name && (
+          <p className="text-[10px] text-red-400">{errors.name}</p>
+        )}
         <label>Email</label>
         <input
           name="email"
@@ -88,6 +90,9 @@ const UserForm = () => {
           onChange={handleChange}
           onBlur={handleBlur}
         />
+        {errors.email && touched.email && (
+          <p className="text-[10px] text-red-400">{errors.email}</p>
+        )}
         <label>Age</label>
         <input
           name="age"
@@ -102,6 +107,9 @@ const UserForm = () => {
           onChange={handleChange}
           onBlur={handleBlur}
         />
+        {errors.age && touched.age && (
+          <p className="text-[10px] text-red-400">{errors.age}</p>
+        )}
         <label>Interested</label>
         <input
           name="interested"
@@ -116,6 +124,9 @@ const UserForm = () => {
           onChange={handleChange}
           onBlur={handleBlur}
         />
+        {errors.interested && touched.interested && (
+          <p className="text-[10px] text-red-400">{errors.interested}</p>
+        )}
         <button
           disabled={isSubmitting}
           type="submit"
@@ -124,12 +135,12 @@ const UserForm = () => {
           Submit
         </button>
       </form>
-      <div>
+      <div className="flex my-7 flex-row gap-6">
         {user.map((items) => (
           <>
             <div
               key={items.id}
-              className="grid grid-row-4 bg-gray-400 p-3 m-2 rounded-md  w-1/5 "
+              className=" bg-gray-400 p-3 m-2 rounded-md  w-1/2 "
             >
               <ShowData items={items} />
             </div>
